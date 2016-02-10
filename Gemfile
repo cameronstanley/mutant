@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'bootstrap-sass'
 gem 'coffee-rails', '~> 4.1.0'
+gem 'hamlit'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'pg'
@@ -18,8 +19,9 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', '~> 2.0'
+  gem 'pry-rails'
   gem 'spring'
+  gem 'web-console', '~> 2.0'
 end
 
 ruby "2.3.0"
