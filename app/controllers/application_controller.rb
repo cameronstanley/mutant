@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   
+  include SessionsHelper
+
   protect_from_forgery with: :exception
 
   before_action :check_logged_in
@@ -8,7 +10,7 @@ class ApplicationController < ActionController::Base
   private
 
   def check_logged_in
-    unless session[:spotify_user]
+    unless logged_in?
       redirect_to auth_spotify_url
     end
   end

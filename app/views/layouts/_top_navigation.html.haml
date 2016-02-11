@@ -1,0 +1,8 @@
+%nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      = link_to "mutant", root_path, class: "navbar-brand"
+    %ul.nav.navbar-nav.navbar-right
+      %p.navbar-text Signed in as #{@spotify_user.display_name}
+      = link_to auth_spotify_logout_path, class: "btn btn-md btn-default navbar-btn" do
+        Logout

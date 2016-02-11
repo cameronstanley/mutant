@@ -1,8 +1,13 @@
-%table.table.table-striped
-  %thead
-    %tr
-      %th Name
-  %tbody
-    - @playlists.each do |playlist|
-      %tr
-        %td= playlist.name
+.page-header
+  %h2 Playlists
+
+.panel.panel-default
+  .table-responsive
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Name
+      %tbody
+        - @playlists.each do |playlist|
+          %tr
+            %td= playlist.name
