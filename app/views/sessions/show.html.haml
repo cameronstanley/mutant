@@ -1,0 +1,19 @@
+.page-header
+  %h2 Spotify Token
+
+.row
+  .panel.panel-default 
+    .panel-body
+      %form.form-horizontal
+        .form-group
+          %label.control-label.col-md-2 ID
+          .col-md-10
+            .form-control-static= @spotify_user.id
+        .form-group
+          %label.control-label.col-md-2 Token
+          .col-md-10
+            %p.form-control-static= @spotify_user.credentials["token"]
+        .form-group
+          %label.control-label.col-md-2 Refresh Token
+          .col-md-10
+            %p.form-control-static= @spotify_user.credentials["refresh_token"]

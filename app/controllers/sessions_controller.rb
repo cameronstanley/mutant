@@ -1,7 +1,10 @@
 class SessionsController < ApplicationController
 
-  skip_before_action :check_logged_in
-  skip_before_action :get_spotify_user
+  skip_before_action :check_logged_in, except: [:show]
+  skip_before_action :get_spotify_user, except: [:show]
+
+  def show
+  end
 
   def new
   end

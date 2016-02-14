@@ -1,0 +1,22 @@
+.page-header
+  %ul.nav.nav-pills.pull-right
+    %li
+      = link_to "Back", playlists_path
+  %h2
+    Playlist
+    %small= @playlist.name
+
+.panel.panel-default
+  .table-responsive
+    %table.table.table-responsive
+      %thead
+        %tr
+          %th Name
+          %th Artist
+          %th Album
+      %tbody
+        - @playlist.tracks.each do |track|
+          %tr
+            %td= track.name
+            %td= track.artists.map{|artist| artist.name}.join(", ")
+            %td= track.album.name

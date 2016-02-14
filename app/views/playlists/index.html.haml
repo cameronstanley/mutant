@@ -7,7 +7,13 @@
       %thead
         %tr
           %th Name
+          %th Description
+          %th Track Count
+          %th Owner
       %tbody
         - @playlists.each do |playlist|
           %tr
-            %td= playlist.name
+            %td= link_to playlist.name, playlist_path(id: playlist.id, user_id: playlist.owner.id)
+            %td= playlist.description
+            %td= playlist.total
+            %td= playlist.owner.display_name
