@@ -6,6 +6,9 @@
     Playlist
     %small= @playlist.name
 
+.well
+  = link_to "Export as CSV", "#", class: "btn btn-md btn-default"
+
 .panel.panel-default
   .table-responsive
     %table.table.table-responsive
@@ -15,8 +18,11 @@
           %th Artist
           %th Album
       %tbody
-        - @playlist.tracks.each do |track|
+        - @tracks.each do |track|
           %tr
             %td= track.name
             %td= track.artists.map{|artist| artist.name}.join(", ")
             %td= track.album.name
+  .panel-footer
+    .text-center
+      = will_paginate @tracks

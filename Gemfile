@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'bootstrap-sass'
+gem 'bootstrap-will_paginate'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'hamlit'
 gem 'jbuilder', '~> 2.0'
@@ -11,6 +12,7 @@ gem 'rspotify'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
+gem 'will_paginate'
 
 group :test do
   gem 'capybara'  
@@ -27,6 +29,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'rvt'
   gem 'spring'
   gem 'web-console', '~> 2.0'
 end
