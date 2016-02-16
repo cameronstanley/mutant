@@ -3,11 +3,29 @@
     %li
       = link_to "Back", playlists_path
   %h2
+    %span.glyphicon.glyphicon-list
     Playlist
     %small= @playlist.name
 
 .well
-  = link_to "Export as CSV", "#", class: "btn btn-md btn-default"
+  .row
+    .col-md-3
+      .form-group
+        %label Name
+        %p.form-control-static= @playlist.name
+    .col-md-6
+      .form-group
+        %label Description
+        %p.form-control-static= @playlist.description
+    .col-md-3
+      .form-group
+        %label Owner
+        %p.form-control-static= @playlist.owner.display_name
+  .row
+    .col-md-3
+      = link_to "#", class: "btn btn-md btn-default" do
+        %span.glyphicon.glyphicon-export
+        Export as CSV
 
 .panel.panel-default
   .table-responsive
