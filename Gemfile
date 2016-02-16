@@ -29,6 +29,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'guard-rspec', require: false
   gem 'rvt'
   gem 'spring'
   gem 'web-console', '~> 2.0'

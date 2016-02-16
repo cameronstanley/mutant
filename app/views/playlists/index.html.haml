@@ -3,7 +3,7 @@
 
 .panel.panel-default
   .table-responsive
-    %table.table.table-striped
+    %table#playlists-table.table.table-striped
       %thead
         %tr
           %th Name
@@ -13,7 +13,7 @@
       %tbody
         - @playlists.each do |playlist|
           %tr
-            %td= link_to playlist.name, playlist_path(id: playlist.id, user_id: playlist.owner.id)
+            %td= link_to playlist.name, user_playlist_path(user_id: playlist.owner.id, id: playlist.id)
             %td= playlist.description
             %td= playlist.total
             %td= playlist.owner.display_name

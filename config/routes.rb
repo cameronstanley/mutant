@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get 'auth/spotify/token', to: 'sessions#show'
   get 'auth/spotify/logout', to: 'sessions#destroy'
 
-  resources :playlists, only: [:index, :show]
+  resources :playlists, only: [:index]
+  resources :users, only: [] do
+    resources :playlists, only: [:show]
+  end
 
 end
