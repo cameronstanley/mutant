@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   resources :playlists, only: [:index]
   resources :users, only: [] do
-    resources :playlists, only: [:show]
+    resources :playlists, only: [:show] do
+      get 'export_as_csv', on: :member
+    end
   end
 
 end

@@ -1,7 +1,9 @@
 .page-header
   %ul.nav.nav-pills.pull-right
     %li
-      = link_to "Back", playlists_path
+      = link_to playlists_path do
+        %span.glyphicons.glyphicons-menu-left
+        Back
   %h2
     %span.glyphicon.glyphicon-list
     Playlist
@@ -23,7 +25,7 @@
         %p.form-control-static= @playlist.owner.display_name
   .row
     .col-md-3
-      = link_to "#", class: "btn btn-md btn-default" do
+      = link_to export_as_csv_user_playlist_path(user_id: @playlist.owner.id, id: @playlist.id), class: "btn btn-md btn-default" do
         %span.glyphicon.glyphicon-export
         Export as CSV
 
