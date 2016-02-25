@@ -11,12 +11,12 @@ class ApplicationController < ActionController::Base
 
   def check_logged_in
     unless logged_in?
-      redirect_to auth_spotify_url
+      redirect_to login_url
     end
   end
 
   def get_spotify_user
-    @spotify_user = RSpotify::User.new(session[:spotify_user])
+    @spotify_user = RSpotify::User.new(current_user.spotify_user)
   end
 
 end
