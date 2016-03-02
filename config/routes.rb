@@ -9,9 +9,12 @@ Rails.application.routes.draw do
   get 'auth/spotify/logout', to: 'sessions#destroy'
 
   resources :playlists, only: [:index]
+
   resources :users, only: [] do
     resources :playlists, only: [:show] do
       get 'export_as_csv', on: :member
+
+      resources :rss_feeds, except: [:show]
     end
   end
 

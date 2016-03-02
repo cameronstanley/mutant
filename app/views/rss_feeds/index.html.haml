@@ -1,0 +1,30 @@
+.page-header
+  %ul.nav.nav-pills.pull-right
+    %li
+      = link_to new_user_playlist_rss_feed_path(user_id: @playlist.owner.id, playlist_id: @playlist.id) do
+        %span.glyphicon.glyphicon-plus
+        Add RSS Feed
+    %li
+      = link_to user_playlist_path(user_id: @playlist.owner.id, id: @playlist.id) do
+        %span.glyphicon.glyphicon-chevron-left
+        Back
+  %h2 
+    %span.glyphicon.glyphicon-cloud-download
+    RSS Feeds
+    %small #{@playlist.name}
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Name
+      %th URL
+      %th
+  %tbody
+    - @rss_feeds.each do |rss_feed|
+      %tr
+        %td= rss_feed.name
+        %td= rss_feed.url
+        %td
+          = link_to edit_user_playlist_rss_feed_path(user_id: @playlist.owner.id, playlist_id: @playlist.id, id: rss_feed.id), class: "btn btn-md btn-default" do
+            %span.glyphicon.glyphicon-edit
+            Edit

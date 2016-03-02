@@ -2,7 +2,7 @@
   %ul.nav.nav-pills.pull-right
     %li
       = link_to playlists_path do
-        %span.glyphicons.glyphicons-menu-left
+        %span.glyphicon.glyphicon-chevron-left
         Back
   %h2
     %span.glyphicon.glyphicon-list
@@ -18,16 +18,20 @@
     .col-md-6
       .form-group
         %label Description
-        %p.form-control-static= @playlist.description
+        %p.form-control-static= @playlist.description || "None"
     .col-md-3
       .form-group
         %label Owner
         %p.form-control-static= @playlist.owner.display_name
   .row
     .col-md-3
-      = link_to export_as_csv_user_playlist_path(user_id: @playlist.owner.id, id: @playlist.id), class: "btn btn-md btn-default" do
+      = link_to export_as_csv_user_playlist_path(user_id: @playlist.owner.id, id: @playlist.id), class: "btn btn-md btn-default btn-block" do
         %span.glyphicon.glyphicon-export
         Export as CSV
+    .col-md-3
+      = link_to user_playlist_rss_feeds_path(user_id: @playlist.owner.id, playlist_id: @playlist.id), class: "btn btn-md btn-default btn-block", disabled: current_user.spotify_id != @playlist.owner.id do
+        %span.glyphicon.glyphicon-cloud-download
+        Build from RSS
 
 .panel.panel-default
   .table-responsive
@@ -43,6 +47,6 @@
             %td= track.name
             %td= track.artists.map{|artist| artist.name}.join(", ")
             %td= track.album.name
-  .panel-footer
-    .text-center
-      = will_paginate @tracks
+  .panel-footer.text-center
+    %p= will_paginate @tracks
+    %p= page_entries_info @tracks, model: "tracks"

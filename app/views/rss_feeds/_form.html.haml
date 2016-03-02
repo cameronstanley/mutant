@@ -1,0 +1,13 @@
+= form_for @rss_feed, url: user_playlist_rss_feeds_path(user_id: @playlist.owner.id, playlist_id: @playlist.id), html: {class: "form-horizontal"} do |f|
+  .form-group
+    = f.label :name, "Name", class: "control-label col-md-2"
+    .col-md-4
+      = f.text_field :name, class: "form-control"
+  .form-group
+    = f.label :url, "URL", class: "control-label col-md-2"
+    .col-md-8
+      = f.text_field :url, class: "form-control"
+  .form-group
+    .col-md-offset-2.col-md-4
+      = f.submit "Save", class: "btn btn-md btn-block btn-primary"
+

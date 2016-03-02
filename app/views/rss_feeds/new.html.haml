@@ -1,0 +1,11 @@
+.page-header
+  %ul.nav.nav-pills.pull-right
+    %li{role: "presentation"}
+      = link_to user_playlist_rss_feeds_path(user_id: @playlist.owner.id, playlist_id: @playlist.id) do
+        %span.glyphicon.glyphicon-chevron-left
+        Back
+  %h2 
+    %span.glyphicon.glyphicon-plus
+    Add RSS Feed
+
+= render partial: "form"
