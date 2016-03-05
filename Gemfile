@@ -16,6 +16,7 @@ gem 'will_paginate'
 
 group :test do
   gem 'capybara'  
+  gem 'database_cleaner'
   gem 'poltergeist'
   gem 'vcr'
   gem 'webmock', require: false
