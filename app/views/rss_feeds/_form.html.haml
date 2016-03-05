@@ -1,4 +1,4 @@
-= form_for @rss_feed, url: user_playlist_rss_feeds_path(user_id: @playlist.owner.id, playlist_id: @playlist.id), html: {class: "form-horizontal"} do |f|
+= form_for @rss_feed, url: ["new", "create"].include?(action_name) ? user_playlist_rss_feeds_path(user_id: @playlist.owner.id, playlist_id: @playlist.id) : user_playlist_rss_feed_path(user_id: @playlist.owner.id, playlist_id: @playlist.id), html: {class: "form-horizontal"} do |f|
   .form-group
     = f.label :name, "Name", class: "control-label col-md-2"
     .col-md-4

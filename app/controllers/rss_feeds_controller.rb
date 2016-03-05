@@ -1,6 +1,7 @@
 class RssFeedsController < ApplicationController
 
   before_action :get_playlist
+  before_action :get_rss_feed, only: [:edit, :update, :destroy]
   before_action :check_playlist_ownership
 
   def index
@@ -26,21 +27,32 @@ class RssFeedsController < ApplicationController
   end
 
   def edit
-    @rss_feed = RssFeed.find_by(user_id: current_user.id, spotify_playlist_id: params[:playlist_id])
   end
 
-  # TODO Implement
   def update
+    if @rss_feed.update(rss_feed_params)
+      flash[:success] = "RSS feed successfully updated."
+      redirect_to user_playlist_rss_feeds_path(user_id: @playlist.owner.id, playlist_id: @playlist.id)
+    else
+      flash.now[:error] = @rss_feed.errors.to_a.join ", "
+      render "new"
+    end
   end
 
-  # TODO Implement
   def destroy
+    @rss_feed.destroy
+    flash[:success] = "RSS feed successfully removed."
+    redirect_to user_playlist_rss_feeds_path(user_id: @playlist.owner.id, playlist_id: @playlist.id)
   end
 
   private
 
   def get_playlist
     @playlist = RSpotify::Playlist.find(params[:user_id], params[:playlist_id])
+  end
+
+  def get_rss_feed
+    @rss_feed = RssFeed.find_by(user_id: current_user.id, spotify_playlist_id: params[:playlist_id], id: params[:id])
   end
 
   def check_playlist_ownership

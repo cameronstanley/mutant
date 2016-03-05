@@ -24,7 +24,10 @@
       %tr
         %td= rss_feed.name
         %td= rss_feed.url
-        %td
+        %td.text-right
           = link_to edit_user_playlist_rss_feed_path(user_id: @playlist.owner.id, playlist_id: @playlist.id, id: rss_feed.id), class: "btn btn-md btn-default" do
             %span.glyphicon.glyphicon-edit
             Edit
+          = link_to user_playlist_rss_feed_path(user_id: @playlist.owner.id, playlist_id: @playlist.id, id: rss_feed.id), method: :delete, class: "btn btn-md btn-danger" do
+            %span.glyphicon.glyphicon-remove
+            Remove
