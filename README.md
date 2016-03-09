@@ -1,6 +1,10 @@
 # mutant [![Build Status](https://travis-ci.org/cameronstanley/mutant.svg?branch=master)](https://travis-ci.org/cameronstanley/mutant)
 Spotify Playlist Manager
 
+## Features
+* Export a playlist to CSV
+* Build playlists from RSS feeds
+
 ## Configuration
 Mutant utilizes the Spotify Web API. In order to run your own instance you will need to [register an app](https://developer.spotify.com/my-applications/#!/applications) and add the client ID and secret to your path:
 
