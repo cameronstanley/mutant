@@ -33,20 +33,25 @@
         %span.glyphicon.glyphicon-cloud-download
         Build from RSS
 
-.panel.panel-default
-  .table-responsive
-    %table#tracks-table.table.table-responsive
-      %thead
-        %tr
-          %th Name
-          %th Artist
-          %th Album
-      %tbody
-        - @tracks.each do |track|
-          %tr
-            %td= track.name
-            %td= track.artists.map{|artist| artist.name}.join(", ")
-            %td= track.album.name
-  .panel-footer.text-center
-    %p= will_paginate @tracks
-    %p= page_entries_info @tracks, model: "tracks"
+.row
+  .col-md-8
+    .panel.panel-default
+      .table-responsive
+        %table#tracks-table.table.table-responsive
+          %thead
+            %tr
+              %th Name
+              %th Artist
+              %th Album
+          %tbody
+            - @tracks.each do |track|
+              %tr
+                %td= track.name
+                %td= track.artists.map{|artist| artist.name}.join(", ")
+                %td= track.album.name
+      .panel-footer.text-center
+        %p= will_paginate @tracks
+        %p= page_entries_info @tracks, model: "tracks"
+  .col-md-4.text-center
+    .well.text-center
+      <iframe src="https://embed.spotify.com/?uri=spotify:user:#{@playlist.owner.id}:playlist:#{@playlist.id}&theme=white" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
