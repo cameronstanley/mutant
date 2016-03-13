@@ -19,3 +19,6 @@
             %td= playlist.description
             %td= playlist.total
             %td= playlist.owner.display_name
+  .panel-footer.text-center
+    %p= will_paginate @playlists
+    %p= page_entries_info @playlists, model: "playlist"
