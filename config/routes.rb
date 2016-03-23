@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :playlists, only: [:index, :new, :create]
 
   resources :users, only: [] do
-    resources :playlists, only: [:show] do
+    resources :playlists, only: [:show, :destroy] do
       get 'export_as_csv', on: :member
 
       resources :rss_feeds, except: [:show]

@@ -1,6 +1,6 @@
 class PlaylistsController < ApplicationController
 
-  before_action :get_playlist, only: [:show, :export_as_csv]
+  before_action :get_playlist, only: [:show, :destroy, :export_as_csv]
 
   def index
     get_paginated_playlists
@@ -34,6 +34,12 @@ class PlaylistsController < ApplicationController
       flash.now[:error] = @playlist.errors.to_a.join ", "
       render :new
     end
+  end
+
+  def destroy
+    @spotify_user.unfollow(@playlist)
+    flash[:success] = "Playlist successfully unfollowed."
+    redirect_to playlists_path
   end
 
   def export_as_csv

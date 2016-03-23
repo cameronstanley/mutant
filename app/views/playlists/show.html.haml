@@ -32,6 +32,10 @@
       = link_to user_playlist_rss_feeds_path(user_id: @playlist.owner.id, playlist_id: @playlist.id), class: "btn btn-md btn-default btn-block", disabled: current_user.spotify_id != @playlist.owner.id do
         %span.glyphicon.glyphicon-cloud-download
         Build from RSS
+    .col-md-3
+      = link_to user_playlist_path(user_id: @playlist.owner.id, id: @playlist.id), method: :delete, class: "btn btn-md btn-danger btn-block" do
+        %span.glyphicon.glyphicon-remove
+        Unfollow Playlist
 
 .row
   .col-md-8
