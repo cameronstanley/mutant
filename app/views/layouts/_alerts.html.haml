@@ -1,0 +1,11 @@
+- if flash.any?
+  .row
+    .col-md-12
+      - flash.each do |type, message|
+        %div{class: "alert #{alert_container_class(type)} alert-dismissible", role: "alert"}
+          %button{type: "button", class: "close", data: {dismiss: "alert"}}
+            %span{aria: {hidden: "true"}}
+              \&times;
+            %span{class: "sr-only"} Close
+          %span{class: "#{alert_icon_class(type)}"}
+          = message.html_safe
