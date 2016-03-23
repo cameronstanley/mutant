@@ -2,7 +2,8 @@
 Spotify Playlist Manager
 
 ## Features
-* Listen to a playlist
+* Preview a playlist
+* Create a playlist
 * Export a playlist to CSV
 * Build playlists from RSS feeds
 
