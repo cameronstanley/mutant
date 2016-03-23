@@ -14,6 +14,28 @@ class PlaylistsController < ApplicationController
     end
   end
 
+  def new
+    @playlist = Playlist.new
+  end
+
+  def create
+    @playlist = Playlist.new(playlist_params)
+
+    if @playlist.valid?
+      begin
+        created_playlist = @spotify_user.create_playlist!(@playlist.name)
+        flash[:success] = "Playlist successfully created."
+        redirect_to user_playlist_path(user_id: created_playlist.owner.id, id: created_playlist.id)
+      rescue Exception => e
+        flash.now[:error] = "Error occurred creating playlist: #{e.message}"
+        render :new
+      end
+    else
+      flash.now[:error] = @playlist.errors.to_a.join ", "
+      render :new
+    end
+  end
+
   def export_as_csv
     playlist_export = PlaylistExport.new(@playlist)
     send_data playlist_export.as_csv, filename: "#{@playlist.name.downcase}.csv"
@@ -40,6 +62,10 @@ class PlaylistsController < ApplicationController
     end
 
     RSpotify.raw_response = false
+  end
+
+  def playlist_params
+    params.require(:playlist).permit(:name)
   end
 
 end
