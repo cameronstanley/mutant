@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  root to: "playlists#index"
+  root to: "application#index"
+  #root to: "playlists#index"
 
   get 'auth/spotify'
   get 'login', to: "sessions#new"
