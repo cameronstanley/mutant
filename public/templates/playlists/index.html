@@ -19,7 +19,6 @@
       <thead>
         <tr>
           <th>Name</th>
-          <th>Description</th>
           <th>Track Count</th>
           <th>Owner</th>
         </tr>
@@ -27,9 +26,8 @@
       <tbody>
         <tr ng-repeat="playlist in playlists">
           <td>{{playlist.name}}</td>
-          <td>{{playlist.description}}</td>
           <td>{{playlist.total}}</td>
-          <td>{{playlist.owner.display_name}}</td>
+          <td>{{playlist.owner.id}}</td>
         </tr>
       </tbody>
     </table>

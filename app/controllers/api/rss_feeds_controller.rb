@@ -1,4 +1,4 @@
-class RssFeedsController < ApplicationController
+class Api::RssFeedsController < ApplicationController
 
   before_action :get_playlist
   before_action :get_rss_feed, only: [:edit, :update, :destroy]

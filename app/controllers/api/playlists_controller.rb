@@ -1,9 +1,10 @@
-class PlaylistsController < ApplicationController
+class Api::PlaylistsController < ApplicationController
 
   before_action :get_playlist, only: [:show, :destroy, :export_as_csv]
 
   def index
     get_paginated_playlists
+    render json: @playlists
   end
     
   def show
