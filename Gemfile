@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'angularjs-rails'
+gem 'angular_rails_csrf'
 gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
 gem 'coffee-rails', '~> 4.1.0'

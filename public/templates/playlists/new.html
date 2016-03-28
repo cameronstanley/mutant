@@ -16,9 +16,17 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <div class="well">
-      <form name="playlist" class="form-horizontal">
+      <form novalidate class="form-horizontal">
         <div class="form-group">
-
+          <label for="name" class="control-label col-md-2">Name</label>
+          <div class="col-md-8">
+            <input type="text" ng-model="playlist.name" class="form-control" placeholder="Enter playlist name" />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-8 col-md-offset-2">
+            <input type="submit" ng-click="create(playlist)" value="Save" class="btn btn-md btn-primary btn-block" />
+          </div>
         </div>
       </form>
     </div>

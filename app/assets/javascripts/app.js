@@ -24,3 +24,11 @@ angular.module('mutantApp').controller('playlistsCtrl', function($scope, $http) 
     $scope.playlists = data;
   });
 });
+
+angular.module('mutantApp').controller('newPlaylistCtrl', function($scope, $http) {
+  $scope.create = function(playlist) {
+    $http.post('/api/playlists', playlist).success(function() {
+      console.log("success"); 
+    });
+  };
+});
