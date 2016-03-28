@@ -25,22 +25,18 @@ class Api::PlaylistsController < ApplicationController
     if @playlist.valid?
       begin
         created_playlist = @spotify_user.create_playlist!(@playlist.name)
-        flash[:success] = "Playlist successfully created."
-        redirect_to user_playlist_path(user_id: created_playlist.owner.id, id: created_playlist.id)
+        render json: {status: :created, message: "Playlist successfully created."}
       rescue Exception => e
-        flash.now[:error] = "Error occurred creating playlist: #{e.message}"
-        render :new
+        render json: {status: :internal_server_error, message: "Error occurred creating playlist: #{e.message}"}
       end
     else
-      flash.now[:error] = @playlist.errors.to_a.join ", "
-      render :new
+      render json: {status: :bad_request, message: @playlists.errors.to_a.join(", ")}
     end
   end
 
   def destroy
     @spotify_user.unfollow(@playlist)
-    flash[:success] = "Playlist successfully unfollowed."
-    redirect_to playlists_path
+    render json: {status: :no_content, message: "Playlist successfully deleted."}
   end
 
   def export_as_csv

@@ -25,10 +25,10 @@ angular.module('mutantApp').controller('playlistsCtrl', function($scope, $http) 
   });
 });
 
-angular.module('mutantApp').controller('newPlaylistCtrl', function($scope, $http) {
+angular.module('mutantApp').controller('newPlaylistCtrl', function($scope, $http, $location) {
   $scope.create = function(playlist) {
     $http.post('/api/playlists', playlist).success(function() {
-      console.log("success"); 
+      $location.path('/playlists');
     });
   };
 });
