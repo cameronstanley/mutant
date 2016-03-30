@@ -37,7 +37,12 @@ angular.module('mutantApp').controller('playlistsCtrl', function($scope, $http) 
 });
 
 angular.module('mutantApp').controller('playlistCtrl', function($scope, $http, $routeParams) {
-  $http.get('/api/users/' + $routeParams['user_id'] + '/playlists/' + $routeParams['id']).success();
+  $scope.user_id = $routeParams['user_id'];
+  $scope.id = $routeParams['id'];
+  
+  $http.get('/api/users/' + $scope.user_id + '/playlists/' + $scope.playlist_id).success(function(data) {
+    $scope.playlist = data;
+  });
 });
 
 angular.module('mutantApp').controller('newPlaylistCtrl', function($scope, $http, $location) {
