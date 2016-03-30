@@ -1,0 +1,46 @@
+<div class="page-header">
+  <ul class="nav nav-pills pull-right">
+    <li>
+      <a href="/playlists">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        Back
+      </a>
+    </li>
+  </ul>
+  <h2>
+    <span class="glyphicon glyphicon-list"></span>
+    Playlist
+    <small>{{playlist.name}}</small>
+  </h2>
+</div>
+
+<div class="well">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Name</label>
+        <p class="form-control-static">{{playlist.name}}</p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Description</label>
+        <p class="form-control-static">{{playlist.description || "None"}}</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Owner</label>
+        <p class="form-control-static">{{playlist.owner.display_name}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <a ng-href="/api/users/{{playlist.owner.id}}/playlists/{{playlist.id}}/export_as_csv" class="btn btn-md btn-default btn-block">
+        <span class="glyphicon glyphicon-export"></span>
+        Export as CSV
+      </a>
+    </div>
+  </div>
+</div>

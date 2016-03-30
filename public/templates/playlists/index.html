@@ -25,7 +25,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="playlist in playlists">
-          <td>{{playlist.name}}</td>
+          <td><a ng-href="/users/{{playlist.owner.id}}/playlists/{{playlist.id}}">{{playlist.name}}</a></td>
           <td>{{playlist.total}}</td>
           <td>{{playlist.owner.id}}</td>
         </tr>

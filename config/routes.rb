@@ -20,4 +20,6 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/*path', to: redirect { |path_params, req| "/?goto=#{path_params[:path]}"  }
+
 end
