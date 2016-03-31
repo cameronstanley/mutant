@@ -10,9 +10,10 @@ class Api::PlaylistsController < ApplicationController
   def show
     current_page = params[:page].to_i || 0
     tracks = @playlist.tracks(limit: 100, offset: current_page * 100)
-    @tracks = WillPaginate::Collection.create(current_page + 1, 100, @playlist.total) do |pager|
+    tracks = WillPaginate::Collection.create(current_page + 1, 100, @playlist.total) do |pager|
       pager.replace(tracks)
     end
+    render json: @playlist
   end
 
   def new

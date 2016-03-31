@@ -6,7 +6,7 @@ angular.module('mutantApp').config(['$routeProvider', '$locationProvider', funct
       templateUrl: 'templates/playlists/index.html',
       controller: 'playlistsCtrl'
     })
-    .when('/users/:user_id/playlists/:id', {
+    .when('/users/:user_id/playlists/:playlist_id', {
       templateUrl: 'templates/playlists/show.html',
       controller: 'playlistCtrl'
     })
@@ -38,7 +38,7 @@ angular.module('mutantApp').controller('playlistsCtrl', function($scope, $http) 
 
 angular.module('mutantApp').controller('playlistCtrl', function($scope, $http, $routeParams) {
   $scope.user_id = $routeParams['user_id'];
-  $scope.id = $routeParams['id'];
+  $scope.playlist_id = $routeParams['playlist_id'];
   
   $http.get('/api/users/' + $scope.user_id + '/playlists/' + $scope.playlist_id).success(function(data) {
     $scope.playlist = data;
