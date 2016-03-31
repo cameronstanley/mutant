@@ -58,4 +58,4 @@
         %p= page_entries_info @tracks, model: "tracks"
   .col-md-4.text-center
     .well.text-center
-      <iframe src="https://embed.spotify.com/?uri=spotify:user:#{@playlist.owner.id}:playlist:#{@playlist.id}&theme=white" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+      <iframe ng-src="https://embed.spotify.com/?uri=spotify:user:#{@playlist.owner.id}:playlist:#{@playlist.id}&theme=white" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>

@@ -36,13 +36,21 @@ angular.module('mutantApp').controller('playlistsCtrl', function($scope, $http) 
   });
 });
 
-angular.module('mutantApp').controller('playlistCtrl', function($scope, $http, $routeParams) {
+angular.module('mutantApp').controller('playlistCtrl', function($scope, $http, $routeParams, $location, $sce) {
   $scope.user_id = $routeParams['user_id'];
   $scope.playlist_id = $routeParams['playlist_id'];
   
   $http.get('/api/users/' + $scope.user_id + '/playlists/' + $scope.playlist_id).success(function(data) {
     $scope.playlist = data;
   });
+
+  $scope.unfollow = function() {
+    return $http.delete('/api/users/' + $scope.user_id + '/playlists/' + $scope.playlist_id).success(function() {
+      $location.path('/playlists');      
+    });
+  }
+
+  $scope.spotify_embed_url = $sce.trustAsResourceUrl('https://embed.spotify.com/?uri=spotify:user:' + $scope.user_id + ':playlist:' + $scope.playlist_id + '&theme=white" width="300" height="380" frameborder="0" allowtransparency="true"');
 });
 
 angular.module('mutantApp').controller('newPlaylistCtrl', function($scope, $http, $location) {
