@@ -72,7 +72,11 @@
           <tbody>
             <tr ng-repeat="track in tracks">
               <td>{{track.name}}</td>
-              <td>{{track.artists.join(', ')}}</td>
+              <td>
+                <ul class="list-inline">
+                  <li ng-repeat="artist in track.artists">{{artist.name}}</li>
+                </ul>
+              </td>
               <td>{{track.album.name}}</td>
             </tr>
           </tbody>

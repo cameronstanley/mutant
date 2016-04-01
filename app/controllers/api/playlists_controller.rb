@@ -13,7 +13,7 @@ class Api::PlaylistsController < ApplicationController
     tracks = WillPaginate::Collection.create(current_page + 1, 100, @playlist.total) do |pager|
       pager.replace(tracks)
     end
-    render json: @playlist
+    render json: {playlist: @playlist, tracks: tracks}
   end
 
   def new

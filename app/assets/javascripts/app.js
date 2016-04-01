@@ -14,6 +14,14 @@ angular.module('mutantApp').config(['$routeProvider', '$locationProvider', funct
       templateUrl: 'templates/playlists/new.html',
       controller: 'newPlaylistCtrl'
     })
+    .when('/users/:user_id/playlists/:playlist_id/rss_feeds', {
+      templateUrl: 'templates/rss_feeds/index',
+      controller: 'rssFeedsCtrl'
+    })
+    .when('/users/:user_id/playlists/:playlist_id/rss_feeds/new', {
+      templateUrl: 'templates/rss_feeds/new',
+      controller: 'newRssFeedCtrl'
+    })
     .otherwise({
       redirectTo: function(routeParams, path, search) {
         if (search.goto) {
@@ -39,9 +47,13 @@ angular.module('mutantApp').controller('playlistsCtrl', function($scope, $http) 
 angular.module('mutantApp').controller('playlistCtrl', function($scope, $http, $routeParams, $location, $sce) {
   $scope.user_id = $routeParams['user_id'];
   $scope.playlist_id = $routeParams['playlist_id'];
+  $scope.playlist = {};
+  $scope.tracks = [];
   
   $http.get('/api/users/' + $scope.user_id + '/playlists/' + $scope.playlist_id).success(function(data) {
-    $scope.playlist = data;
+    $scope.playlist = data.playlists;
+    console.log(data.tracks);
+    $scope.tracks = data.tracks;
   });
 
   $scope.unfollow = function() {
