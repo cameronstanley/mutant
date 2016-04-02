@@ -15,8 +15,16 @@ angular.module('mutantApp').config(['$routeProvider', '$locationProvider', funct
       controller: 'newPlaylistCtrl' 
     })
     .when('/users/:userId/playlists/:playlistId/rss_feeds', { 
-      templateUrl: 'templates/rss_feeds/index.html', 
+      templateUrl: 'templates/rss-feeds/index.html', 
       controller: 'rssFeedsCtrl' 
+    })
+    .when('/users/:userId/playlists/:playlistId/rss_feeds/:rssFeedId/new', {
+      templateUrl: 'templates/rss-feeds/new.html',
+      controller: 'newRssFeedCtrl'
+    })
+    .when('/users/:userId/playlists/:playlidID/rss_feeds/:rssFeedId/edit', {
+      templateUrl: 'templates/rss-feeds/edit.html',
+      controller: 'editRssFeedCtrl'
     })
     .otherwise({
       redirectTo: function(routeParams, path, search) {

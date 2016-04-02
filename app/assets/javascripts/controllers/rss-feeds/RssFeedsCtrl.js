@@ -1,4 +1,6 @@
 angular.module('mutantApp').controller('rssFeedsCtrl', function($scope, $http, $routeParams) {
+  $scope.userId = $routeParams['userId'];
+  $scope.playlistId = $routeParams['playlistId'];
   $scope.playlist = {};
   $scope.rssFeeds = [];
 
