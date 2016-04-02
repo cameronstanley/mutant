@@ -1,19 +1,19 @@
-angular.module('mutantApp').controller('playlistCtrl', function($scope, $http, $routeParams, $location, $sce) {
-  $scope.user_id = $routeParams['user_id'];
-  $scope.playlist_id = $routeParams['playlist_id'];
+angular.module('mutantApp').controller('playlistCtrl', function($scope, $http, $routeParams, $location, $sce, Playlist) {
+  $scope.userId = $routeParams['userId'];
+  $scope.playlistId = $routeParams['playlistId'];
   $scope.playlist = {};
   $scope.tracks = [];
   
-  $http.get('/api/users/' + $scope.user_id + '/playlists/' + $scope.playlist_id).success(function(data) {
+  Playlist.get($scope.userId, $scope.playlistId).success(function(data) {
     $scope.playlist = data.playlists;
     $scope.tracks = data.tracks;
   });
 
   $scope.unfollow = function() {
-    return $http.delete('/api/users/' + $scope.user_id + '/playlists/' + $scope.playlist_id).success(function() {
+    return Playlist.delete($scope.userId, $scope.playlistId).success(function() {
       $location.path('/playlists');      
     });
   }
 
-  $scope.spotify_embed_url = $sce.trustAsResourceUrl('https://embed.spotify.com/?uri=spotify:user:' + $scope.user_id + ':playlist:' + $scope.playlist_id + '&theme=white" width="300" height="380" frameborder="0" allowtransparency="true"');
+  $scope.spotify_embed_url = $sce.trustAsResourceUrl('https://embed.spotify.com/?uri=spotify:user:' + $scope.userId + ':playlist:' + $scope.playlistId + '&theme=white" width="300" height="380" frameborder="0" allowtransparency="true"');
 });

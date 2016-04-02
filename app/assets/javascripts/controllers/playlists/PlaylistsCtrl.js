@@ -1,7 +1,8 @@
-angular.module('mutantApp').controller('playlistsCtrl', function($scope, $http) {
+angular.module('mutantApp')
+.controller('playlistsCtrl', function($scope, $http, Playlist) {
   $scope.playlists = [];
 
-  $http.get('/api/playlists').success(function(data) {
+  Playlist.query().success(function(data) {
     $scope.playlists = data;
   });
 });
