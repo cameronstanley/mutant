@@ -1,15 +1,11 @@
 class Api::RssFeedsController < ApplicationController
-
   before_action :get_playlist
   before_action :get_rss_feed, only: [:edit, :update, :destroy]
   before_action :check_playlist_ownership
 
   def index
-    @rss_feeds = RssFeed.where(user_id: current_user.id, spotify_playlist_id: params[:playlist_id])
-  end
-
-  def new
-    @rss_feed = RssFeed.new
+    rss_feeds = RssFeed.where(user_id: current_user.id, spotify_playlist_id: params[:playlist_id])
+    render json: rss_feeds
   end
 
   def create
@@ -65,5 +61,4 @@ class Api::RssFeedsController < ApplicationController
   def rss_feed_params
     params.require(:rss_feed).permit(:name, :url)
   end
-
 end

@@ -1,4 +1,5 @@
-angular.module('mutantApp').controller('playlistCtrl', function($scope, $http, $routeParams, $location, $sce, Playlist) {
+angular.module('mutantApp')
+.controller('playlistCtrl', function($scope, $http, $routeParams, $location, $sce, Playlist) {
   $scope.userId = $routeParams['userId'];
   $scope.playlistId = $routeParams['playlistId'];
   $scope.playlist = {};
