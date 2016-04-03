@@ -1,10 +1,11 @@
-angular.module('mutantApp').controller('rssFeedsCtrl', function($scope, $http, $routeParams) {
+angular.module('mutantApp')
+.controller('rssFeedsCtrl', function($scope, $http, $routeParams, RssFeed) {
   $scope.userId = $routeParams['userId'];
   $scope.playlistId = $routeParams['playlistId'];
   $scope.playlist = {};
   $scope.rssFeeds = [];
 
-  $http.get('/api/users/{{userId}}}/playlists/{{playlistId}}/rss_feeds').success(function(data) {
+  RssFeed.query($scope.userId, $scope.playlistId).success(function(data) {
     $scope.rssFeeds = data;
   });
 });

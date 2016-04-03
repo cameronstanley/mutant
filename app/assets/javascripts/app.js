@@ -18,7 +18,7 @@ angular.module('mutantApp').config(['$routeProvider', '$locationProvider', funct
       templateUrl: 'templates/rss-feeds/index.html', 
       controller: 'rssFeedsCtrl' 
     })
-    .when('/users/:userId/playlists/:playlistId/rss_feeds/:rssFeedId/new', {
+    .when('/users/:userId/playlists/:playlistId/rss_feeds/new', {
       templateUrl: 'templates/rss-feeds/new.html',
       controller: 'newRssFeedCtrl'
     })
