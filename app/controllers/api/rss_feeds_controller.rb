@@ -15,10 +15,8 @@ class Api::RssFeedsController < ApplicationController
 
     if @rss_feed.save
       flash[:success] = "RSS feed successfully added."
-      redirect_to user_playlist_rss_feeds_path(user_id: @playlist.owner.id, playlist_id: @playlist.id)
     else
       flash.now[:error] = @rss_feed.errors.to_a.join ", "
-      render "new"
     end
   end
 
@@ -28,17 +26,14 @@ class Api::RssFeedsController < ApplicationController
   def update
     if @rss_feed.update(rss_feed_params)
       flash[:success] = "RSS feed successfully updated."
-      redirect_to user_playlist_rss_feeds_path(user_id: @playlist.owner.id, playlist_id: @playlist.id)
     else
       flash.now[:error] = @rss_feed.errors.to_a.join ", "
-      render "new"
     end
   end
 
   def destroy
     @rss_feed.destroy
     flash[:success] = "RSS feed successfully removed."
-    redirect_to user_playlist_rss_feeds_path(user_id: @playlist.owner.id, playlist_id: @playlist.id)
   end
 
   private
