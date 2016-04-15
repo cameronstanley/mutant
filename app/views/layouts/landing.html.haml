@@ -9,10 +9,6 @@
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true 
     = csrf_meta_tags
-  %body{"ng-app" => "mutantApp"}
-    - if logged_in?
-      = render "top_navigation"
+  %body
     .container
-      = render "alerts"
       = yield
-      <div ng-view></div>

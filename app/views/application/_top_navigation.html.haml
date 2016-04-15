@@ -6,6 +6,6 @@
       %p.navbar-text 
         %span.glyphicon.glyphicon-user
         Signed in as #{@spotify_user.display_name}
-      = link_to auth_spotify_logout_path, class: "btn btn-md btn-default navbar-btn" do
+      %a.btn.btn-md.btn-default.navbar-btn(ng-href="#{auth_spotify_logout_path}")
         %span.glyphicon.glyphicon-log-out
         Logout
