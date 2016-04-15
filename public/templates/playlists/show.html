@@ -1,0 +1,92 @@
+<div class="page-header">
+  <ul class="nav nav-pills pull-right">
+    <li>
+      <a href="/playlists">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        Back
+      </a>
+    </li>
+  </ul>
+  <h2>
+    <span class="glyphicon glyphicon-list"></span>
+    Playlist
+    <small>{{playlist.name}}</small>
+  </h2>
+</div>
+
+<div class="well">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Name</label>
+        <p class="form-control-static">{{playlist.name}}</p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Description</label>
+        <p class="form-control-static">{{playlist.description || "None"}}</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Owner</label>
+        <p class="form-control-static">{{playlist.owner.display_name}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <a ng-href="/api/users/{{userId}}/playlists/{{playlistId}}/export_as_csv" target="_self" class="btn btn-md btn-default btn-block">
+        <span class="glyphicon glyphicon-export"></span>
+        Export as CSV
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a ng-href="/users/{{userId}}/playlists/{{playlistId}}/rss_feeds" class="btn btn-md btn-default btn-block">
+        <span class="glyphicon glyphicon-cloud-download"></span>
+        Build from RSS
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a ng-click="unfollow()" class="btn btn-md btn-danger btn-block">
+        <span class="glyphicon glyphicon-remove"></span>
+        Unfollow Playlist
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="table-responsive">
+        <table id="tracks-table" class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Artist</th>
+              <th>Album</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="track in tracks">
+              <td>{{track.name}}</td>
+              <td>
+                <ul class="list-inline">
+                  <li ng-repeat="artist in track.artists">{{artist.name}}</li>
+                </ul>
+              </td>
+              <td>{{track.album.name}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 text-center">
+    <div class="well text-center">
+      <iframe ng-src="{{spotify_embed_url}}"></iframe>
+    </div>
+  </div>
+</div>

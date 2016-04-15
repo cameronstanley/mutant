@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     spotify_user = RSpotify::User.new(request.env["omniauth.auth"])
     log_in(spotify_user)
     
-    redirect_to playlists_url
+    redirect_to root_url
   end
 
   def destroy

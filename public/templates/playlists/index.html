@@ -1,0 +1,35 @@
+<div class="page-header">
+  <ul class="nav nav-pills pull-right">
+    <li role="presentation">
+      <a href="/playlists/new">
+        <span class="glyphicon glyphicon-plus"></span>
+        New Playlist
+      </a>
+    </li>
+  </ul>
+  <h2>
+    <span class="glyphicon glyphicon-list"></span>
+    Playlists
+  </h2>
+</div>
+
+<div class="panel panel-default">
+  <div class="table-responsive">
+    <table id="playlists-table" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Track Count</th>
+          <th>Owner</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="playlist in playlists">
+          <td><a ng-href="/users/{{playlist.owner.id}}/playlists/{{playlist.id}}">{{playlist.name}}</a></td>
+          <td>{{playlist.total}}</td>
+          <td>{{playlist.owner.id}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

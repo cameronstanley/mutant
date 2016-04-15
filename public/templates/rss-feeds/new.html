@@ -1,0 +1,16 @@
+<div class="page-header">
+  <ul class="nav nav-pills pull-right">
+    <li>
+      <a ng-href="/users/{{userId}}/playlists/{{playlistId}}/rss_feeds">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        Back
+      </a>
+    </li>
+  </ul>
+  <h2>
+    <span class="glyphicon glyphicon-plus"></span>
+    Add RSS Feed
+  </h2>
+</div>
+
+<div ng-include="'templates/rss-feeds/form.html'"></div>

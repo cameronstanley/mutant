@@ -1,0 +1,46 @@
+<div class="page-header">
+  <ul class="nav nav-pills pull-right">
+    <li>
+      <a ng-href="/users/{{userId}}/playlists/{{playlistId}}/rss_feeds/new">
+        <span class="glyphicon glyphicon-plus"></span>
+        Add RSS Feed
+      </a>
+    </li>
+    <li>
+      <a ng-href="/users/{{userId}}/playlists/{{playlistId}}">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        Back
+      </a>
+    </li>
+  </ul>
+  <h2>
+    <span class="glyphicon glyphicon-cloud-download"></span>
+    RSS Feeds <small>{{playlist.name}}
+  </h2>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>URL</th>
+      <th><th>
+    </tr>
+  </thead>
+  <tbody>
+  <tbody>
+    <tr ng-repeat="rssFeed in rssFeeds">
+      <td>{{rssFeed.name}}</td>
+      <td>{{rssFeed.url}}</td>
+      <td class="text-right">
+        <a ng-href="/users/{{userId}}/playlists/{{playlistId}}/rss_feeds/{{rssFeedId}}/edit", class="btn btn-md btn-default">
+          <span class="glyphicon glyphicon-default"></span>
+          Edit
+        </a>
+        <a ng-click="delete(rssFeed.id)}" class="btn btn-md btn-danger">
+          <span class="glyphicon glyphicon-remove"></span>
+          Remove
+        </a>
+      </td>
+    </tr>
+</table>

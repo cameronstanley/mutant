@@ -1,4 +1,4 @@
 def log_in
-  visit login_path
+  visit root_path
   click_link "Login via Spotify"
 end

@@ -1,17 +1,19 @@
-class PlaylistsController < ApplicationController
+class Api::PlaylistsController < ApplicationController
 
   before_action :get_playlist, only: [:show, :destroy, :export_as_csv]
 
   def index
     get_paginated_playlists
+    render json: @playlists
   end
     
   def show
     current_page = params[:page].to_i || 0
     tracks = @playlist.tracks(limit: 100, offset: current_page * 100)
-    @tracks = WillPaginate::Collection.create(current_page + 1, 100, @playlist.total) do |pager|
+    tracks = WillPaginate::Collection.create(current_page + 1, 100, @playlist.total) do |pager|
       pager.replace(tracks)
     end
+    render json: {playlist: @playlist, tracks: tracks}
   end
 
   def new
@@ -24,22 +26,18 @@ class PlaylistsController < ApplicationController
     if @playlist.valid?
       begin
         created_playlist = @spotify_user.create_playlist!(@playlist.name)
-        flash[:success] = "Playlist successfully created."
-        redirect_to user_playlist_path(user_id: created_playlist.owner.id, id: created_playlist.id)
+        render json: {status: :created, message: "Playlist successfully created."}
       rescue Exception => e
-        flash.now[:error] = "Error occurred creating playlist: #{e.message}"
-        render :new
+        render json: {status: :internal_server_error, message: "Error occurred creating playlist: #{e.message}"}
       end
     else
-      flash.now[:error] = @playlist.errors.to_a.join ", "
-      render :new
+      render json: {status: :bad_request, message: @playlists.errors.to_a.join(", ")}
     end
   end
 
   def destroy
     @spotify_user.unfollow(@playlist)
-    flash[:success] = "Playlist successfully unfollowed."
-    redirect_to playlists_path
+    render json: {status: :no_content, message: "Playlist successfully deleted."}
   end
 
   def export_as_csv
