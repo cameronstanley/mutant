@@ -2,8 +2,7 @@ source 'https://rubygems.org'
 
 gem 'angularjs-rails'
 gem 'angular_rails_csrf'
-gem 'bootstrap-sass'
-gem 'bootstrap-will_paginate'
+gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'feedjira'
 gem 'hamlit'
@@ -16,6 +15,10 @@ gem 'sass-rails', '~> 5.0'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end
 
 group :test do
   gem 'capybara'  
