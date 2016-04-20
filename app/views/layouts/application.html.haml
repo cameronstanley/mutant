@@ -6,13 +6,12 @@
     %meta{"http-equiv" => "X-UA-Compatible", content: "IE=edge"}
     %base{href: "/"}
     %title Mutant
-    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = stylesheet_link_tag "application", 'https://fonts.googleapis.com/css?family=Roboto:400,700,300,500', media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true 
     = csrf_meta_tags
-  %body{"ng-app" => "mutantApp"}
-    - if logged_in?
-      = render "top_navigation"
-    .container
-      = render "alerts"
-      = yield
-      <div ng-view></div>
+  %body(ng-app="mutantApp")
+    .wrapper
+      .side-nav.col-xs-2
+        <side-nav></side-nav>
+      .main-content.col-xs-10
+        %ng-view

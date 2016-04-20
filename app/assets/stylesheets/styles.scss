@@ -1,3 +1,17 @@
 body {
-  padding-top: 70px;
+  font-family: 'Roboto';
+  height: 100%;
+}
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+} 
+
+.side-nav {
+  background-color: $midnight_blue_color;
+  height: 100%;
 }
