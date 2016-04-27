@@ -11,7 +11,6 @@
     = csrf_meta_tags
   %body(ng-app="mutantApp")
     .wrapper
-      .side-nav.col-xs-2
-        <side-nav></side-nav>
+      <side-nav class='col-xs-2'></side-nav>
       .main-content.col-xs-10
         %ng-view

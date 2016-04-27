@@ -17,4 +17,5 @@
 //= require angular
 //= require angular-route
 //= require turbolinks
-//= require_tree .
+//= require ./angular/app.module.js
+//= require_tree ./angular
